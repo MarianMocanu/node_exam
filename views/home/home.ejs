@@ -1,0 +1,19 @@
+<%- include ('../header/header.ejs') %>
+
+<% if (error != 'noError') { %>
+<div class='center'>
+  <h3><%= error %></h3>
+</div>
+<% } else { %>
+<% if (session == 'noSession') { %>
+<div class='center'>
+  <h3>Welcome to Kea, proceed to login to checkout your electives</h3>
+</div>
+<% } else { %>
+<div class='center'>
+  <h3>Welcome <%= session.username %>, proceed to Profile tab to check out your assigned electives.</h3>
+</div>
+<% } %>
+<% } %>
+
+<%- include ('../footer/footer.ejs') %>

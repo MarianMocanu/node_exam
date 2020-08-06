@@ -1,0 +1,22 @@
+<%- include ('../header/header.ejs'); -%>
+
+<div class='center'>
+  <% if (error != 'noError') { %>
+  <p> <%= error %> </p>
+  <% } %>
+  <p>Log in using the form below</p>
+  <form class='pure-form pure-form-aligned' name='logIn' action='/login' method='POST'>
+    <fieldset>
+      <div class='pure-control-group'>
+        <input type='text' name='username' placeholder='Username' /></div>
+
+      <div class='pure-control-group'>
+        <input type='password' name='password' placeholder='Password' /></div>
+
+      <button type='submit' class='button-success pure-button'>Log in</button>
+    </fieldset>
+  </form>
+
+</div>
+
+<%- include ('../footer/footer.ejs'); -%>

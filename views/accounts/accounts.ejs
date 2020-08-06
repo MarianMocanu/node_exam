@@ -1,0 +1,36 @@
+<%- include ('../header/header.ejs') %>
+
+<div class='center'>
+  <h3>Welcome <%= session.username %>, here is a list of all accounts</h3>
+
+  <table class='pure-table pure-table-bordered'>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Username</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>CPR</th>
+        <th>E-mail</th>
+        <th>Options</th>
+      </tr>
+    </thead>
+    <tbody id="table-body">
+      <% accounts.forEach(acc => { %>
+      <tr>
+        <td> <%= acc.id %> </td>
+        <td> <%= acc.username %> </td>
+        <td> <%= acc.owner.firstName %> </td>
+        <td> <%= acc.owner.lastName %> </td>
+        <td> <%= acc.owner.cpr %> </td>
+        <td> <%= acc.owner.email %> </td>
+        <td> <a id="account" class="pure-button" href="/accounts/<%= acc.id %>/edit">Edit</a> </td>
+      </tr>
+      <% }) %>
+    </tbody>
+
+  </table>
+</div>
+
+
+<%- include ('../footer/footer.ejs') %>

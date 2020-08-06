@@ -1,0 +1,40 @@
+<%- include ('../header/header.ejs') %>
+
+<div class='center'>
+  <% if (error != 'noError') { %>
+  <h4><%= error %></h4>
+  <% } %>
+  <p>Sign up using the form below</p>
+  <form action='/signup' method='POST' name='signup' class='pure-form pure-form-aligned'
+    onsubmit='return validatePasswords()'>
+
+    <!-- First name -->
+    <div class='pure-control-group'>
+      <input type='text' name='firstname' placeholder='First Name'></div>
+    <!-- Last name -->
+    <div class='pure-control-group'>
+      <input type='text' name='lastname' placeholder='Last Name'></div>
+    <!-- CPR -->
+    <div class='pure-control-group'>
+      <input type='text' name='cpr' placeholder='CPR'></div>
+    <!-- E-mail -->
+    <div class='pure-control-group'>
+      <input type='email' name='email' placeholder='E-mail'></div>
+    <!-- Username -->
+    <div class='pure-control-group'>
+      <input type='text' name='username' placeholder='Username'></div>
+    <!-- Password -->
+    <div class='pure-control-group'>
+      <input type='password' name='password' placeholder='Password'></div>
+    <!-- Confirm Password -->
+    <div class='pure-control-group'>
+      <input type='password' name='cpassword' placeholder='Confirm Password'></div>
+    <!-- Submit button -->
+    <button type='submit' class='button-success pure-button'>Sign up</button>
+
+  </form>
+</div>
+
+<script src='/signup.js'></script>
+
+<%- include ('../footer/footer.ejs') %>
