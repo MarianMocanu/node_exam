@@ -52,11 +52,13 @@ app.set('view engine', 'ejs');
 
 // Import routes
 const authRoute = require('./routes/auth.js');
-const usersRoute = require('./routes/accounts.js');
+const accountsRoute = require('./routes/accounts.js');
+const petsRoute = require('./routes/pets.js');
 
 // Setting routes as middleware
 app.use(authRoute);
-app.use(usersRoute);
+app.use(accountsRoute);
+app.use(petsRoute);
 
 app.get('/', (req, res) => {
     let { error } = req.query;
@@ -70,6 +72,24 @@ app.get('/', (req, res) => {
     });
 });
 
+app.get('/about', (req, res) => { 
+    const { value } = req.session;
+    return res.render('about/about.ejs', {
+        session: value
+    })
+});
+
+const server = require('http').createServer(app);
+const io = require('socket.io').listen(server);
+server.listen(3310)
+io.on('connection', (socket) => {
+    console.log("A new client connected.");
+
+    socket.on('message', (data) => {
+        console.log("From client: ", data.message);
+        io.emit('message', data);
+    });
+});
 
 
 

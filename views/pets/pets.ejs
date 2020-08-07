@@ -1,0 +1,41 @@
+<%- include ('../header/header.ejs') %>
+
+<div class='center'>
+  <h3>Welcome <%= session.username %>, here is a list of all pets</h3>
+
+  <table class='pure-table pure-table-bordered'>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Owner Name</th>
+      </tr>
+    </thead>
+    <tbody id="table-body">
+      <% owners.forEach(owner => { %>
+      <% owner.pet.forEach(pet => { %>
+      <tr>
+        <td> <%= pet.id %> </td>
+        <td> <%= pet.name %> </td>
+        <td> <%= pet.type %> </td>
+        <td> <%= owner.firstName %> <%= owner.lastName %></td>
+        
+      </tr>
+      <% }) %>
+      <% }) %>
+      <form action="/pets" method="POST">
+        <tr>
+          <td></td>
+          <td><input type='text' name='name' placeholder='Pet Name' /></td>
+          <td><input type='text' name='type' placeholder='Type' /></td>
+          <td><button type="submit">Add new pet</button></td>
+        </tr>
+      </form>
+    </tbody>
+
+  </table>
+</div>
+
+
+<%- include ('../footer/footer.ejs') %>

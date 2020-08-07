@@ -32,12 +32,13 @@ router.post('/login', (req, res) => {
     if (username && password) {
         try {
             Account.query().select('id', 'username', 'password').where('username', username)
-                .withGraphFetched('role').then(foundUser => {
+                .withGraphFetched('role').withGraphFetched('owner').then(foundUser => {
                     if (foundUser.length == 0) {
                         return res.status(400).redirect('/login?error=User does not exist!');
                     } else {
                         bcrypt.compare(password, foundUser[0].password).then(match => {
                             if (match) {
+                                console.log('after login', foundUser[0]);
                                 req.session.value = foundUser[0];
                                 return res.redirect('/');
                             } else {

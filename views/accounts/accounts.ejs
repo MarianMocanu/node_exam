@@ -24,11 +24,15 @@
         <td> <%= acc.owner.lastName %> </td>
         <td> <%= acc.owner.cpr %> </td>
         <td> <%= acc.owner.email %> </td>
-        <td> <a id="account" class="pure-button" href="/accounts/<%= acc.id %>/edit">Edit</a> </td>
+        <td style="display: inline-flex;"> 
+          <a id="account" class="pure-button" href="/accounts/<%= acc.id %>/edit">Edit</a> 
+          <form action="/accounts/<%= acc.id %>/delete" method="POST">
+            <button type='submit' class='button-warning pure-button'>Delete</button>
+          </form>
+        </td>
       </tr>
       <% }) %>
     </tbody>
-
   </table>
 </div>
 
