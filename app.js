@@ -95,9 +95,9 @@ io.on('connection', (socket) => {
 
 const port = process.env.PORT ? process.env.PORT : 3000;
 
-const server = app.listen(port, (error) => {
+const httpserver = app.listen(port, (error) => {
     if (error) {
         console.log("Error starting the server");
     }
-    console.log("This server is running on port", server.address().port);
+    console.log("This server is running on port", httpserver.address().port);
 });
