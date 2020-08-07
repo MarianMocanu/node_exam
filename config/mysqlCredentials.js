@@ -1,5 +1,5 @@
 module.exports = { 
     database: 'pet_clinic',
     user:     'root',
-    password: 'Septembrie@1993'
+    password: '12345678'
 };
