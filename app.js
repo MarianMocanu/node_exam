@@ -72,7 +72,7 @@ app.get('/', (req, res) => {
     });
 });
 
-app.get('/about', (req, res) => { 
+app.get('/about', (req, res) => {
     const { value } = req.session;
     return res.render('about/about.ejs', {
         session: value
@@ -93,10 +93,11 @@ io.on('connection', (socket) => {
 
 
 
-const PORT = 3000;
-app.listen(PORT, (error) => {
+const port = process.env.PORT ? process.env.PORT : 3000;
+
+const server = app.listen(port, (error) => {
     if (error) {
-        console.log(error);
+        console.log("Error starting the server");
     }
-    console.log('Server is running on the port', PORT);
-})
+    console.log("This server is running on port", server.address().port);
+});
