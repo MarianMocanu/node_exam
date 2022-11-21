@@ -103,6 +103,6 @@ dist
 # TernJS port file
 .tern-port
 
-.config/config.json
-.config/mailCredentials.js
-.config/mysqlCredentials.js
+config/config.json
+config/mailCredentials.js
+config/mysqlCredentials.js
