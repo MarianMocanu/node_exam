@@ -1,18 +1,16 @@
-const credentials = require('./config/mysqlCredentials.js');
+const credentials = require("./config/mysqlCredentials.js");
 
-const { knexSnakeCaseMappers } = require('objection');
+const { knexSnakeCaseMappers } = require("objection");
 
 module.exports = {
-
   development: {
-    client: 'mysql',
+    client: "mysql",
     connection: {
-      host: 'exam.caxgh3chpvut.us-east-2.rds.amazonaws.com',
+      host: "localhost",
       database: credentials.database,
       user: credentials.user,
-      password: credentials.password
+      password: credentials.password,
     },
-    ...knexSnakeCaseMappers()
-  }
-
+    ...knexSnakeCaseMappers(),
+  },
 };
